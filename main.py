@@ -6,8 +6,8 @@ import paramiko
 
 NetworkAdpater = "이더넷 어댑터 이더넷 2"
 passwd = "123456"
-oriDirectory = "/data/data/com.termux/files/home/"
-downloadDirectory = "C:"
+oriDirectory = "/data/data/com.termux/files/home/video"
+downloadDirectory = "D:/ChzzkVideo/모방리"
 
 executeCommand = ""
 escape = ["&&", "|"]
@@ -93,6 +93,8 @@ def get_download():
         return
     if (oriDirectory == ""):
         oriDirectory = "."
+    if (oriDirectory[-1] != "/"):
+        oriDirectory += "/"
     os.system('start cmd /k ' + f'scp -P 8022 "user@{getIpOutput.text()}":"{oriDirectory}{getDownloadCode.text()}" "{downloadDirectory}"')
 
 def open_download_folder():

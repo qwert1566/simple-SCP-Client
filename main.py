@@ -6,8 +6,8 @@ import paramiko
 
 NetworkAdpater = "이더넷 어댑터 이더넷 2"
 passwd = "123456"
-oriDirectory = "/data/data/com.termux/files/home/video"
-downloadDirectory = "D:/ChzzkVideo/모방리"
+oriDirectory = "/data/data/com.termux/files/home/"
+downloadDirectory = "D:/"
 
 executeCommand = ""
 escape = ["&&", "|"]

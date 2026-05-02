@@ -6,9 +6,8 @@ import paramiko
 
 NetworkAdpater = "이더넷 어댑터 이더넷 2"
 passwd = "123456"
-
-oriDirectory = "/data/data/com.termux/files/home/"
-downloadDirectory = "C:/"
+oriDirectory = "/data/data/com.termux/files/home/video/"
+downloadDirectory = "D:/ChzzkVideo/모방리"
 
 executeCommand = ""
 escape = ["&&", "|"]
@@ -121,10 +120,15 @@ if os.name != "nt":
     exit()
 
 content = QtWidget.QWidget()
+content.setProperty("class", "content")
 layout = QtWidget.QVBoxLayout(content)
 window = QtWidget.QWidget()
+window.setProperty("class", "content")
 
 app.setStyleSheet("""
+[class="content"] {
+    background-color: #202020;
+}
 
 QPushButton {
     background-color: #61CCFF;
@@ -150,6 +154,8 @@ QLineEdit, QPlainTextEdit {
     background-color: #272727;
     margin-top: 2px;
     padding-left: 12px;
+    color: #ffffff;
+                  
 }
 QPlainTextEdit {
     padding: 12px;

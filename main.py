@@ -7,7 +7,7 @@ import paramiko
 NetworkAdpater = "이더넷 어댑터 이더넷 2"
 passwd = "123456"
 oriDirectory = "/data/data/com.termux/files/home/"
-downloadDirectory = "D:/"
+downloadDirectory = "C:/"
 
 executeCommand = ""
 escape = ["&&", "|"]
@@ -119,12 +119,42 @@ if os.name != "nt":
     QtWidget.QMessageBox.critical(None, "Error", "Can running only Windows")
     exit()
 
+content = QtWidget.QWidget()
+layout = QtWidget.QVBoxLayout(content)
 window = QtWidget.QWidget()
-layout = QtWidget.QVBoxLayout()
 
 app.setStyleSheet("""
+QScrollBar:vertical {
+    border: none;
+    background-color: #2b2b2b;
+    width: 8px;
+    margin: 0px;
+    border-radius: 4px;
+}
+
+QScrollBar::handle:vertical {
+    background-color: #555555;
+    min-height: 20px;
+    border-radius: 4px; /* Rounded corners */
+}
+
+QScrollBar::handle:vertical:hover {
+    background-color: #888888;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 8px;
+    border: none;
+    background-color: #444444;
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: none;
+}
+
 QWidget {
     color: #ffffff;
+    background-color: #202020;
 }
 QPushButton {
     background-color: #61CCFF;
@@ -304,8 +334,17 @@ layout.addWidget(openFolder)
 
 ######################################
 
+scroll = QtWidget.QScrollArea()
+scroll.setWidgetResizable(True)
+scroll.setWidget(content)
+content.setSizePolicy(
+    QtWidget.QSizePolicy.Policy.Expanding,
+    QtWidget.QSizePolicy.Policy.Expanding
+)
+
 layout.addStretch()
-window.setLayout(layout)
+main_layout = QtWidget.QVBoxLayout(window)
+main_layout.addWidget(scroll)
 window.resize(700, 0)
 window.setWindowTitle("file import script V1")
 window.show()
